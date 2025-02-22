@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [amount, setAmount] = useState(0);
-  const [fromCurrency, setFromCurrency] = useState("EUR");
+  const [fromCurrency, setFromCurrency] = useState("KZT");
   const [toCurrency, setToCurrency] = useState("USD");
 
   const [exchangeRate, setExchangeRate] = useState({});
@@ -43,6 +43,7 @@ function App() {
           // setToCurrency(Object.keys(data.rates)[0]);
         } catch (error) {
           console.log(error.message);
+          setIsError(error.message);
         } finally {
           setIsLoading(false);
         }
@@ -143,10 +144,6 @@ function App() {
               </div>
             </div>
           </div>
-          <button type="submit" className="submit-button">
-            Get Exchange Rate
-          </button>
-
           <p className="exchange-rate-result">{convertedAmount.toFixed(2)}</p>
         </form>
       )}
